@@ -1,0 +1,259 @@
+/** Layout **/
+
+html, body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #222;
+  color: white;
+  overflow: hidden;
+}
+
+#code-playground {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow: scroll;
+}
+
+#code-panel {
+  display: block;
+  position: relative;
+  flex: 3 1;
+  overflow: hidden;
+}
+
+#editor {
+  width: 100%;
+  height: 100vh;
+}
+
+#info-panel {
+  display: block;
+  max-height: 100vh;
+  overflow: scroll;
+  min-width: 200px;
+  flex: 1 1 40%;
+  background: #333;
+  color: white;
+  text-align: center;
+}
+
+#sandbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/** Editor Selection **/
+
+#select-editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#select-editor > h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.8rem;
+  text-align: center;
+}
+
+.select-editor-hidden .editor-helper-text {
+  display: block;
+}
+
+
+.select-editor-hidden #select-editor {
+  display: none;
+}
+
+#select-editor > h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.editor-selection {
+  position: relative;
+  cursor: pointer;
+  flex: 1 1 48%;
+  align-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.editor-selection h1 {
+  margin: 12px auto;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+}
+
+.editor-details {
+  position: absolute;
+  background: #111;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  align-self: center;
+}
+
+.editor-details ul {
+  text-align: left;
+  margin: 0 auto;
+}
+
+.editor-details h1 {
+  letter-spacing: 1rem;
+  text-transform: uppercase;
+}
+
+.editor-details p {
+  margin: 6px auto;
+}
+
+.editor-selection .editor-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  transform: translateX(100%);
+  transition: transform 0.25s ease-in-out;
+}
+
+.editor-selection:hover .editor-details {
+  transform: translateX(0);
+}
+
+/** Editor **/
+
+
+.editor-helper-text {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px;
+  font-size: 12px;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border: 16px solid #111; /* Light grey */
+  border-top: 16px solid #333; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/** Logs Panel **/
+
+
+.console-output-label {
+  margin: 0;
+  padding: 24px;
+  background: #222;
+  text-transform: uppercase;
+}
+
+.output-hidden #info-panel {
+  display: none;
+}
+
+#log-list {
+  padding: 12px;
+  text-align: left;
+}
+
+.log-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid white
+}
+
+.log-timestamp {
+  flex: 1 1 20%;
+}
+
+.log-content {
+  overflow-x: scroll;
+  flex: 1 1 80%;
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background: white;
+}
+
+.log-label {
+  flex: 1 1 20%;
+  color: green;
+}
+
+.log-label-error {
+  color: red;
+}
+
+/** Left Menu **/
+
+#side-menu {
+  display: flex;
+  flex-flow: column;
+  background: #333;
+  overflow-y: scroll;
+}
+
+
+.output-hidden .hide-icon {
+  display: none;
+}
+
+.output-hidden .show-icon {
+  display: block;
+}
+
+#side-menu i {
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+  padding: 18px 12px;
+}
+
+#side-menu i:hover {
+  background: #222;
+}
+
+.menu-items > div {
+  user-select: none;
+  cursor: pointer;
+}

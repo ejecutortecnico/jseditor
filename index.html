@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Open JS Sandbox</title>
+  <meta name="description" content="An offline-first Javascript playground.  Powered by the VSCode editor, this is the easiest way to quickly develop and test vanila Javascript code experiments."/>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="/icons/logo-w64.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div id="code-playground" class="output-hidden">
+    <div id="side-menu">
+      <div class="menu-items">
+        <div id="run-button" onclick="runCode()"><i class="material-icons">play_arrow</i></div>
+        <div id="stop-button" onclick="stopCode()"><i class="material-icons">stop</i></div>
+        <div id="save-button" onclick="saveAsFile()"><i class="material-icons">file_download</i></div>
+        <div id="info-button"><a href="https://github.com/triestpa/OpenJS-Sandbox" target="_blank" rel="noopener"><i class="material-icons">info</i></a></div>
+        <div id="hide-button" onclick="toggleOutputVisibility()">
+          <i class="material-icons hide-icon">visibility</i>
+          <i class="material-icons show-icon hidden">visibility_off</i>
+        </div>
+      </div>
+    </div>
+    <div id="code-panel">
+      <div id="editor"></div>
+      <div id="select-editor">
+        <h1>Javascript Playground</h1>
+        <h2>Select Code Editor</h2>
+        <div class="editor-selection" id="select-monaco" onclick="setupMonacoEditor()">
+           <h1>Monaco</h1>
+          <div class="editor-details">
+            <h1>Monaco</h1>
+            <ul class="editor-details-list">
+              <li>The editor that powers <strong>Visual Studio Code</strong>.</li>
+              <li>The most advanced open-source browser-based editor.</li>
+              <li>Recomended for advanced experiments.</li>
+              <li>Large (1.4mb)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="editor-selection" id="select-ace" onclick="setupAceEditor()">
+           <h1>Ace</h1>
+          <div class="editor-details">
+            <h1>Ace</h1>
+            <ul class="editor-details-list">
+              <li>Used by <strong>Cloud9, Khan Academy, Plunker</strong>, and more.</li>
+              <li>Strong feature set, including syntax highlighting and code folding.</li>
+              <li>Recomended for basic experiments.</li>
+              <li>Lightweight-ish (120kb)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="loader" class="hidden"></div>
+      <div class="editor-helper-text">shift+enter to run code.</div>
+    </div>
+    <div id="info-panel">
+      <h2 class="console-output-label">Console Output</h2>
+      <div id="log-list"></div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" async></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
